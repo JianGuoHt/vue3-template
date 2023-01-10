@@ -5,14 +5,12 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
-import { ConfigEnv, PluginOption, loadEnv } from 'vite';
+import { PluginOption } from 'vite';
+import { configMockPlugin } from './mock';
 
-export default ({ command, mode }: ConfigEnv) => {
-  const root = process.cwd();
-  const isBuild = command === 'build';
-  const env = loadEnv(mode, root);
-  console.log(env);
-
+export default ({ isBuild, viteEnv }: ViteConfigEnv) => {
+  const { VITE_USE_MOCK, VITE_GLOB_PROD_MOCK } = viteEnv;
+  const prodMock = VITE_GLOB_PROD_MOCK;
   const vitePlugins: PluginOption[] = [
     vue(),
     Icons({
@@ -29,7 +27,7 @@ export default ({ command, mode }: ConfigEnv) => {
     AutoImport({
       imports: ['vue', 'pinia'],
       resolvers: [ElementPlusResolver()],
-      dts: 'src/auto-import.d.ts', // 生成在src路径下名为auto-import.d.ts的声明文件
+      dts: 'types/auto-import.d.ts', // 生成在src路径下名为auto-import.d.ts的声明文件
       eslintrc: {
         enabled: true, // Default `false`
         filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
@@ -37,7 +35,7 @@ export default ({ command, mode }: ConfigEnv) => {
       },
     }),
     Components({
-      dts: 'src/components.d.ts',
+      dts: 'types/components.d.ts',
       // imports 指定组件所在位置，默认为 src/components; 有需要也可以加上 view 目录
       dirs: ['src/components/'],
       resolvers: [
@@ -48,6 +46,9 @@ export default ({ command, mode }: ConfigEnv) => {
       ],
     }),
   ];
+
+  // vite-plugin-mock
+  VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild, prodMock));
 
   return vitePlugins;
 };

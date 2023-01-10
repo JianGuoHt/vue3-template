@@ -4,7 +4,13 @@ export default {
 };
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { getMenuList } from '@/api/system/menu';
+
+getMenuList().then((res) => {
+  console.log(res);
+});
+</script>
 
 <template>
   <div>

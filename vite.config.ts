@@ -1,11 +1,22 @@
-import { ConfigEnv, defineConfig } from 'vite';
+import { ConfigEnv, defineConfig, loadEnv } from 'vite';
 import { resolve } from 'path';
-import plugins from './vite_config/plugins';
+import plugins from './build/vite/plugins';
+import { wrapperEnv } from './build/utils';
 
 // https://vitejs.dev/config/
-export default defineConfig((env: ConfigEnv) => {
+export default defineConfig(({ command, mode }: ConfigEnv) => {
+  const root = process.cwd();
+  const isBuild = command === 'build';
+  const env = loadEnv(mode, root);
+  const viteEnv: ViteEnv = wrapperEnv(env);
+
+  const viteConfigEnv: ViteConfigEnv = {
+    isBuild,
+    viteEnv,
+  };
+
   return {
-    plugins: plugins(env),
+    plugins: plugins(viteConfigEnv),
 
     // 别名设置
     resolve: {
