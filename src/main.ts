@@ -1,8 +1,6 @@
 import { createApp } from 'vue';
 // dayjs 中文包
 import 'dayjs/locale/zh-cn';
-// normalize.css
-// import 'normalize.css';
 // 全局样式文件
 import '@/assets/styles/index.scss';
 // pinia

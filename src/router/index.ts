@@ -1,14 +1,21 @@
 import { createRouter, createWebHistory, Router, RouteRecordRaw } from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import { LAYOUT } from './constant';
 
 NProgress.configure({ showSpinner: false });
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: () => import('@/views/home/index.vue'),
+    component: LAYOUT,
+    children: [
+      {
+        path: '/',
+        name: 'home',
+        component: () => import('@/views/home/index.vue'),
+      },
+    ],
   },
 ];
 

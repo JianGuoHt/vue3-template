@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
+import { ConfigEnv, defineConfig } from 'vite';
 import { resolve } from 'path';
 import plugins from './vite_config/plugins';
 
 // https://vitejs.dev/config/
-export default defineConfig((env) => {
+export default defineConfig((env: ConfigEnv) => {
   return {
     plugins: plugins(env),
 

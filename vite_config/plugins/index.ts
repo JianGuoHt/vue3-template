@@ -5,10 +5,15 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
-import { ConfigEnv } from 'vite';
+import { ConfigEnv, PluginOption, loadEnv } from 'vite';
 
-export default (env: ConfigEnv) => {
-  return [
+export default ({ command, mode }: ConfigEnv) => {
+  const root = process.cwd();
+  const isBuild = command === 'build';
+  const env = loadEnv(mode, root);
+  console.log(env);
+
+  const vitePlugins: PluginOption[] = [
     vue(),
     Icons({
       compiler: 'vue3',
@@ -43,4 +48,6 @@ export default (env: ConfigEnv) => {
       ],
     }),
   ];
+
+  return vitePlugins;
 };
