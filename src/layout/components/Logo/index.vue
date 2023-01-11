@@ -1,6 +1,6 @@
 <template>
   <div class="layout__logo flex items-center justify-center overflow-hidden">
-    <img :class="[menuCollapse ? '' : 'mr-2']" src="@/assets/images/logo/logo.png" alt="" />
+    <img :class="[menuCollapse ? '' : 'mr-2']" src="/@/assets/images/logo/logo.png" alt="" />
     <h2 v-if="!menuCollapse" class="logo__title">vue3Template</h2>
   </div>
 </template>
@@ -12,7 +12,7 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { useProjectSettingStore } from '@/store/modules/projectSetting';
+import { useProjectSettingStore } from '/@/store/modules/projectSetting';
 
 const projectSettingStore = useProjectSettingStore();
 

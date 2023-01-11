@@ -3,6 +3,10 @@ import { resolve } from 'path';
 import plugins from './build/vite/plugins';
 import { wrapperEnv } from './build/utils';
 
+function pathResolve(dir: string) {
+  return resolve(process.cwd(), '.', dir);
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
   const root = process.cwd();
@@ -20,9 +24,16 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 
     // 别名设置
     resolve: {
-      alias: {
-        '@': resolve(__dirname, './src'), // 把 @ 指向到 src 目录去
-      },
+      alias: [
+        {
+          find: /\/#\//,
+          replacement: pathResolve('types') + '/',
+        },
+        {
+          find: /\/@\//,
+          replacement: pathResolve('src') + '/',
+        },
+      ],
     },
 
     // 服务设置

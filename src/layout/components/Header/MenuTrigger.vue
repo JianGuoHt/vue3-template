@@ -17,7 +17,7 @@ export default defineComponent({
 
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue';
-import { useProjectSettingStore } from '@/store/modules/projectSetting';
+import { useProjectSettingStore } from '/@/store/modules/projectSetting';
 
 const projectSettingStore = useProjectSettingStore();
 

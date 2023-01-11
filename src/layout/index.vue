@@ -22,7 +22,7 @@ import LayoutMain from './components/Main/index.vue';
 import LayoutHeader from './components/Header/index.vue';
 import LayoutMenu from './components/Menu/index.vue';
 import LayoutLogo from './components/Logo/index.vue';
-import { useProjectSettingStore } from '@/store/modules/projectSetting';
+import { useProjectSettingStore } from '/@/store/modules/projectSetting';
 
 const projectSettingStore = useProjectSettingStore();
 
