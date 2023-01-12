@@ -1,47 +1,35 @@
 // 接口数据格式采用统一格式返回
+type CodeValue = 200 | 500;
 
-export function resultSuccess<T = Recordable>(result: T, { message = 'ok' } = {}) {
-  return {
-    code: 200,
-    result,
-    message,
-    type: 'success',
-  };
+interface Response {
+  code: CodeValue;
+  msg: string;
+  data?: any;
 }
 
-export function resultPageSuccess<T = any>(
-  page: number,
-  pageSize: number,
-  list: T[],
-  { message = 'ok' } = {},
-) {
-  const pageData = pagination(page, pageSize, list);
-
-  return {
-    ...resultSuccess({
-      items: pageData,
-      total: list.length,
-    }),
-    message,
-  };
+export function result(options: Response, moreOptions?: object) {
+  return Object.assign(options, moreOptions || {});
 }
 
-export function resultError(message = 'Request failed', { code = 500, result = null } = {}) {
-  return {
-    code,
-    result,
-    message,
-    type: 'error',
-  };
+export function resultSuccess<T = Recordable>(data: T, options?: object) {
+  return result(
+    {
+      code: 200,
+      msg: 'ok',
+      data,
+    },
+    options,
+  );
 }
 
-export function pagination<T = any>(pageNo: number, pageSize: number, array: T[]): T[] {
-  const offset = (pageNo - 1) * Number(pageSize);
-  const ret =
-    offset + Number(pageSize) >= array.length
-      ? array.slice(offset, array.length)
-      : array.slice(offset, offset + Number(pageSize));
-  return ret;
+export function resultError(msg = 'Request failed', options?: object) {
+  return result(
+    {
+      code: 500,
+      msg,
+    },
+    options,
+  );
 }
 
 export interface requestParams {

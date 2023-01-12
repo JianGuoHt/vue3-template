@@ -34,3 +34,10 @@ export function isDate(val: unknown): val is Date {
 export function isNumber(val: unknown): val is number {
   return is(val, 'Number');
 }
+
+/**
+ * @description 是否为数组
+ */
+export function isArray(val: any): val is Array<any> {
+  return val && Array.isArray(val);
+}
