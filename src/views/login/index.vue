@@ -59,7 +59,7 @@ export default defineComponent({
 <script lang="ts" setup>
 import type { IconProps } from '@iconify/vue';
 import { Icon } from '@iconify/vue';
-import { ElMessage } from 'element-plus';
+// import { ElMessage } from 'element-plus';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '/@/store/modules/user';
 
@@ -75,18 +75,18 @@ const userStore = useUserStore();
 
 function handleSubmit() {
   loading.value = true;
-  const message = ElMessage({
-    icon: h(Icon, { icon: 'line-md:loading-loop', color: 'green' } as IconProps),
-    message: '登陆中',
-    duration: 0,
-  });
+  // const message = ElMessage({
+  //   icon: h(Icon, { icon: 'line-md:loading-loop', color: 'green' } as IconProps),
+  //   message: '登陆中',
+  //   duration: 0,
+  // });
   userStore.login(form).then((res) => {
-    message.close();
-    ElMessage({
-      type: 'success',
-      message: '登陆成功，即将进入系统',
-      duration: 1500,
-    });
+    // message.close();
+    // ElMessage({
+    //   type: 'success',
+    //   message: '登陆成功，即将进入系统',
+    //   duration: 1500,
+    // });
     setTimeout(() => {
       loading.value = false;
       router.push('/home');

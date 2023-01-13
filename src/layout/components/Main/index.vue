@@ -1,13 +1,11 @@
 <template>
-  <ElMain class="layout__app__main">
-    <RouterView>
-      <template #default="{ Component, route }">
-        <KeepAlive>
-          <component :is="Component" :key="route.fullPath" />
-        </KeepAlive>
-      </template>
-    </RouterView>
-  </ElMain>
+  <RouterView>
+    <template #default="{ Component, route }">
+      <KeepAlive>
+        <component :is="Component" :key="route.fullPath" />
+      </KeepAlive>
+    </template>
+  </RouterView>
 </template>
 
 <script lang="ts">

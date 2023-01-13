@@ -1,4 +1,4 @@
-import { ElMessage, ElMessageBox } from 'element-plus';
+// import { ElMessage, ElMessageBox } from 'element-plus';
 import { ErrorMessageMode } from '/#/axios';
 
 export function checkStatus(
@@ -21,11 +21,11 @@ export function checkStatus(
 
   if (errMessage) {
     if (errMessageMode === 'message') {
-      ElMessage.error(errMessage);
+      // ElMessage.error(errMessage);
     } else if (errMessageMode === 'messageBox') {
-      ElMessageBox.confirm(errMessage, '提示', {
-        type: 'error',
-      });
+      // ElMessageBox.confirm(errMessage, '提示', {
+      //   type: 'error',
+      // });
     }
   }
 

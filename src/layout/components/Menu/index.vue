@@ -1,19 +1,6 @@
 <template>
   <div class="layout__menu overflow-hidden">
-    <ElScrollbar height="100%">
-      <ElMenu default-active="2" v-bind="menuOptions">
-        <ElMenuItem v-for="item in 20" :key="item" :index="item + ''">
-          <div class="menu__content">
-            <ElIcon>
-              <Icon icon="ep:apple" />
-            </ElIcon>
-          </div>
-          <template #title>
-            <div class="menu__content">菜单{{ item }}</div>
-          </template>
-        </ElMenuItem>
-      </ElMenu>
-    </ElScrollbar>
+    <n-menu :collapsed="menuCollapse" :options="menuOptions" />
   </div>
 </template>
 
@@ -24,53 +11,97 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
+import type { MenuOption } from 'naive-ui';
 import { Icon } from '@iconify/vue';
+import { NIcon } from 'naive-ui';
 import { useProjectSettingStore } from '/@/store/modules/projectSetting';
 
 const projectSettingStore = useProjectSettingStore();
 
 const { menuCollapse } = storeToRefs(projectSettingStore);
 
-const menuOptions = reactive({
-  backgroundColor: 'rgb(0, 20, 40)',
-  textColor: '#bbbbbb',
-  activeTextColor: '#ffffff',
-  collapse: menuCollapse,
-});
+function renderIcon() {
+  return () => h(NIcon, null, { default: () => h(Icon, { icon: 'ep:apple' }) });
+}
+
+const menuOptions: MenuOption[] = [
+  {
+    label: '且听风吟',
+    key: 'hear-the-wind-sing',
+    icon: renderIcon(),
+  },
+  {
+    label: '1973年的弹珠玩具',
+    key: 'pinball-1973',
+    icon: renderIcon(),
+    disabled: true,
+    children: [
+      {
+        label: '鼠',
+        key: 'rat',
+      },
+    ],
+  },
+  {
+    label: '寻羊冒险记',
+    key: 'a-wild-sheep-chase',
+    disabled: true,
+    icon: renderIcon(),
+  },
+  {
+    label: '舞，舞，舞',
+    key: 'dance-dance-dance',
+    icon: renderIcon(),
+    children: [
+      {
+        type: 'group',
+        label: '人物',
+        key: 'people',
+        children: [
+          {
+            label: '叙事者',
+            key: 'narrator',
+            icon: renderIcon(),
+          },
+          {
+            label: '羊男',
+            key: 'sheep-man',
+            icon: renderIcon(),
+          },
+        ],
+      },
+      {
+        label: '饮品',
+        key: 'beverage',
+        icon: renderIcon(),
+        children: [
+          {
+            label: '威士忌',
+            key: 'whisky',
+          },
+        ],
+      },
+      {
+        label: '食物',
+        key: 'food',
+        children: [
+          {
+            label: '三明治',
+            key: 'sandwich',
+          },
+        ],
+      },
+      {
+        label: '过去增多，未来减少',
+        key: 'the-past-increases-the-future-recedes',
+      },
+    ],
+  },
+];
 </script>
 
 <style lang="scss" scoped>
 .layout__menu {
-  --el-menu-item-height: 42px;
   height: calc(100% - 50px);
-  :deep(.el-menu) {
-    border-right: none;
-  }
-
-  :deep(.el-menu-item) {
-    margin-top: 6px;
-    &.is-active::after {
-      background-color: var(--el-color-primary);
-    }
-    &::after {
-      z-index: 1;
-      display: block;
-      content: ' ';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 8px;
-      right: 8px;
-      pointer-events: none;
-      background-color: rgba(0, 0, 0, 0);
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-
-    .menu__content {
-      position: relative;
-      z-index: 2;
-    }
-  }
 }
 </style>

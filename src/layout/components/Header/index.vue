@@ -1,9 +1,9 @@
 <template>
-  <ElHeader class="layout__header bg-white shadow" style="--el-header-height: 50px">
+  <div class="layout__header bg-white shadow">
     <div class="layout__header__left flex">
       <MenuTrigger />
     </div>
-  </ElHeader>
+  </div>
 </template>
 
 <script lang="ts">
@@ -18,6 +18,7 @@ import MenuTrigger from './MenuTrigger.vue';
 
 <style lang="scss" scoped>
 .layout__header {
+  height: 50px;
   .layout__header__left {
     height: inherit;
   }

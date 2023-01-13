@@ -1,11 +1,11 @@
 <template>
   <div class="menu__trigger" @click="onChangeCollapse">
-    <ElIcon v-if="menuCollapse" size="18">
+    <NIcon v-if="menuCollapse" size="18">
       <Icon icon="ep:expand" />
-    </ElIcon>
-    <ElIcon v-else size="18">
+    </NIcon>
+    <NIcon v-else size="18">
       <Icon icon="ep:fold" />
-    </ElIcon>
+    </NIcon>
   </div>
 </template>
 
@@ -32,7 +32,7 @@ function onChangeCollapse() {
 
 <style lang="scss" scoped>
 .menu__trigger {
-  line-height: var(--el-header-height);
+  line-height: 50px;
   cursor: pointer;
 }
 </style>

@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
@@ -25,8 +25,14 @@ export default ({ isBuild, viteEnv }: ViteConfigEnv) => {
       },
     }),
     AutoImport({
-      imports: ['vue', 'pinia'],
-      resolvers: [ElementPlusResolver()],
+      imports: [
+        'vue',
+        'pinia',
+        {
+          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
+        },
+      ],
+      resolvers: [],
       dts: 'types/auto-import.d.ts', // 生成在src路径下名为auto-import.d.ts的声明文件
       eslintrc: {
         enabled: true, // Default `false`
@@ -39,7 +45,7 @@ export default ({ isBuild, viteEnv }: ViteConfigEnv) => {
       // imports 指定组件所在位置，默认为 src/components; 有需要也可以加上 view 目录
       dirs: ['src/components/'],
       resolvers: [
-        ElementPlusResolver(),
+        NaiveUiResolver(),
         IconsResolver({
           customCollections: ['custom'],
         }),

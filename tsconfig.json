@@ -12,7 +12,7 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "noEmit": true,
-    "types": ["element-plus/global"],
+    "types": ["naive-ui/volar"],
     "typeRoots": ["./node_modules/@types/", "./types"],
     // baseUrl来告诉编译器到哪里去查找模块，所有非相对模块导入都会被当做相对于 baseUrl。
     "baseUrl": ".",

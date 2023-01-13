@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import zhCn from 'element-plus/lib/locale/lang/zh-cn';
+import { zhCN, dateZhCN } from 'naive-ui';
 </script>
 
 <template>
-  <ElConfigProvider :locale="zhCn">
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN">
     <RouterView />
-  </ElConfigProvider>
+  </NConfigProvider>
 </template>
 
 <style scoped></style>

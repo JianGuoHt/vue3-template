@@ -1,14 +1,19 @@
 <template>
-  <ElContainer class="layout__default">
-    <ElAside class="layout__aside" :width="menuCollapse ? '64px' : '200px'">
+  <NLayout class="layout__default" position="absolute" has-sider>
+    <NLayoutSider class="layout__aside" :width="menuCollapse ? '64px' : '200px'">
       <LayoutLogo />
       <LayoutMenu />
-    </ElAside>
-    <ElContainer style="flex-direction: column">
-      <LayoutHeader />
-      <LayoutMain />
-    </ElContainer>
-  </ElContainer>
+    </NLayoutSider>
+
+    <NLayout>
+      <NLayoutHeader>
+        <LayoutHeader />
+      </NLayoutHeader>
+      <NLayoutContent>
+        <LayoutMain />
+      </NLayoutContent>
+    </NLayout>
+  </NLayout>
 </template>
 
 <script lang="ts">
