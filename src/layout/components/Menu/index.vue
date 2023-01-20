@@ -1,6 +1,13 @@
 <template>
   <div class="layout__menu overflow-hidden">
-    <n-menu :collapsed="menuCollapse" :options="menuOptions" />
+    <n-menu
+      :collapsed="menuCollapse"
+      :options="menuOptions"
+      :inverted="inverted"
+      :indent="24"
+      :collapsed-icon-size="20"
+      :collapsed-width="64"
+    />
   </div>
 </template>
 
@@ -15,10 +22,15 @@ import type { MenuOption } from 'naive-ui';
 import { Icon } from '@iconify/vue';
 import { NIcon } from 'naive-ui';
 import { useProjectSettingStore } from '/@/store/modules/projectSetting';
+import { useDesignSettingStore } from '/@/store/modules/designSetting';
 
 const projectSettingStore = useProjectSettingStore();
 
 const { menuCollapse } = storeToRefs(projectSettingStore);
+
+const design = useDesignSettingStore();
+// 菜单颜色是否反转
+const inverted = computed(() => !design.darkTheme);
 
 function renderIcon() {
   return () => h(NIcon, null, { default: () => h(Icon, { icon: 'ep:apple' }) });

@@ -3,5 +3,11 @@
  */
 export enum StorageEnum {
   // 用户token
-  Token = 'Token',
+  TOKEN_KEY = 'Token',
+
+  //深色主题(黑暗模式)
+  DARK_THEME = 'DarkTheme',
+
+  // 系统主题色
+  APP_THEME = 'AppTheme',
 }

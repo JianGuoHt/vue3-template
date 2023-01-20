@@ -1,6 +1,11 @@
 <template>
   <NLayout class="layout__default" position="absolute" has-sider>
-    <NLayoutSider class="layout__aside" :width="menuCollapse ? '64px' : '200px'">
+    <NLayoutSider
+      class="layout__aside"
+      :width="menuCollapse ? '64px' : '200px'"
+      :inverted="true"
+      :collapsed-width="64"
+    >
       <LayoutLogo />
       <LayoutMenu />
     </NLayoutSider>
@@ -40,7 +45,7 @@ const { menuCollapse } = storeToRefs(projectSettingStore);
 }
 
 .layout__aside {
-  background-color: rgb(0, 20, 40);
+  // background-color: rgb(0, 20, 40);
   transition: all 0.2s ease-in-out;
 }
 </style>

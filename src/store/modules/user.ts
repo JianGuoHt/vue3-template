@@ -28,7 +28,7 @@ export const useUserStore = defineStore('user', {
       try {
         const response = await login(userInfo);
         const { token } = response;
-        storage.set(StorageEnum.Token, token);
+        storage.set(StorageEnum.TOKEN_KEY, token);
         this.setToken(token);
 
         return Promise.resolve(response);

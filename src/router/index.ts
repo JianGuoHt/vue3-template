@@ -1,7 +1,8 @@
+import type { App } from 'vue';
 import { createRouter, createWebHistory, Router, RouteRecordRaw } from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { LAYOUT } from './constant';
+import { Layout } from './constant';
 import { isArray } from '/@/utils/is';
 
 NProgress.configure({ showSpinner: false });
@@ -18,28 +19,14 @@ for (const path in modules) {
   });
 }
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    component: LAYOUT,
-    children: [
-      {
-        path: '/',
-        name: 'home',
-        component: () => import('/@/views/home/index.vue'),
-      },
-    ],
-  },
-];
-
 // 需要验证权限
-export const asyncRoutes = [];
+export const asyncRoutes = [...routeModuleList];
 
 // 普通路由，无需验证权限
 export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: LAYOUT,
+    component: Layout,
     children: [
       {
         path: 'home',
@@ -74,5 +61,9 @@ router.beforeEach(() => {
 router.afterEach(() => {
   NProgress.done();
 });
+
+export function setupRouter(app: App) {
+  app.use(router);
+}
 
 export default router;

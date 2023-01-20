@@ -1,24 +1,22 @@
 import { createApp } from 'vue';
-
+import App from './App.vue';
 // 全局样式文件
 import '/@/assets/styles/index.scss';
+import { setupStore } from '/@/store';
+import { setupRouter } from './router';
 
-// dayjs 中文包
-// import 'dayjs/locale/zh-cn';
+function bootstrap() {
+  const app = createApp(App);
 
-// pinia
-import store from '/@/store';
+  // 挂载状态管理
+  setupStore(app);
 
-// vue-router
-import router from './router';
+  // 挂载路由
+  setupRouter(app);
 
-import App from './App.vue';
+  app.mount('#app');
+}
 
-const app = createApp(App);
-
-app.use(store);
-app.use(router);
-
-app.mount('#app');
+bootstrap();
 
 // app.config.devtools = true;

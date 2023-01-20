@@ -1,5 +1,5 @@
 <template>
-  <div class="menu__trigger" @click="onChangeCollapse">
+  <div class="layout__header__trigger" @click="onChangeCollapse">
     <NIcon v-if="menuCollapse" size="18">
       <Icon icon="ep:expand" />
     </NIcon>
@@ -30,9 +30,4 @@ function onChangeCollapse() {
 }
 </script>
 
-<style lang="scss" scoped>
-.menu__trigger {
-  line-height: 50px;
-  cursor: pointer;
-}
-</style>
+<style lang="scss" scoped></style>

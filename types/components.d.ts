@@ -22,12 +22,17 @@ declare module '@vue/runtime-core' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem'];
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar'];
     NConfigProvider: typeof import('naive-ui')['NConfigProvider'];
+    NDivider: typeof import('naive-ui')['NDivider'];
+    NDrawer: typeof import('naive-ui')['NDrawer'];
+    NDrawerContent: typeof import('naive-ui')['NDrawerContent'];
     NIcon: typeof import('naive-ui')['NIcon'];
     NLayout: typeof import('naive-ui')['NLayout'];
     NLayoutContent: typeof import('naive-ui')['NLayoutContent'];
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader'];
     NLayoutSider: typeof import('naive-ui')['NLayoutSider'];
     NMenu: typeof import('naive-ui')['NMenu'];
+    NSwitch: typeof import('naive-ui')['NSwitch'];
+    NTooltip: typeof import('naive-ui')['NTooltip'];
     RouterLink: typeof import('vue-router')['RouterLink'];
     RouterView: typeof import('vue-router')['RouterView'];
   }

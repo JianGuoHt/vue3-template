@@ -114,6 +114,7 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
       }
     }
   }
+
   return new Storage();
 };
 
