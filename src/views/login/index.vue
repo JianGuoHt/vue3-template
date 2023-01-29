@@ -11,40 +11,48 @@
         </div>
       </div>
       <div class="login__form">
-        <ElForm :model="form" :rules="rules" size="large">
-          <ElFormItem label="">
-            <ElInput v-model="form.username" placeholder="请输入用户名">
+        <NForm
+          ref="formRef"
+          :model="form"
+          :rules="rules"
+          label-placement="left"
+          label-width="auto"
+          size="large"
+        >
+          <NFormItem path="username">
+            <NInput v-model:value="form.username" placeholder="请输入用户名">
               <template #prefix>
-                <ElIcon size="18px">
+                <NIcon size="18px">
                   <Icon icon="ep:user" />
-                </ElIcon>
+                </NIcon>
               </template>
-            </ElInput>
-          </ElFormItem>
-          <ElFormItem label="">
-            <ElInput v-model="form.password" placeholder="请输入密码">
+            </NInput>
+          </NFormItem>
+          <NFormItem path="password">
+            <NInput v-model:value="form.password" placeholder="请输入密码">
               <template #prefix>
-                <ElIcon size="18px">
+                <NIcon size="18px">
                   <Icon icon="ep:lock" />
-                </ElIcon>
+                </NIcon>
               </template>
-            </ElInput>
-          </ElFormItem>
-          <ElFormItem class="" style="line-height: 14px" size="small">
+            </NInput>
+          </NFormItem>
+          <NFormItem>
             <div class="flex-1"></div>
-            <ElLink href="" type="primary" :underline="false">忘记密码</ElLink>
-          </ElFormItem>
-          <ElFormItem>
-            <ElButton
+            <NButton text tag="a" href="/" type="primary">忘记密码</NButton>
+          </NFormItem>
+          <NFormItem>
+            <NButton
               class="w-full"
               type="primary"
               :loading="loading"
               :disabled="loading"
               @click="handleSubmit"
-              >登 录</ElButton
             >
-          </ElFormItem>
-        </ElForm>
+              登 录
+            </NButton>
+          </NFormItem>
+        </NForm>
       </div>
     </div>
   </div>
@@ -59,38 +67,53 @@ export default defineComponent({
 <script lang="ts" setup>
 import type { IconProps } from '@iconify/vue';
 import { Icon } from '@iconify/vue';
+import type { FormInst } from 'naive-ui';
 // import { ElMessage } from 'element-plus';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '/@/store/modules/user';
+
+const loading = ref(false);
+const message = useMessage();
+const formRef = ref<FormInst | null>(null);
 
 const form = reactive({
   username: '',
   password: '',
 });
-const rules = reactive({});
-const loading = ref(false);
+const rules = reactive({
+  username: {
+    required: true,
+    trigger: ['blur', 'input'],
+    message: '请输入用户名',
+  },
+  password: {
+    required: true,
+    trigger: ['blur', 'input'],
+    message: '请输入密码',
+  },
+});
 
-const router = useRouter();
 const userStore = useUserStore();
+const router = useRouter();
 
-function handleSubmit() {
-  loading.value = true;
-  // const message = ElMessage({
-  //   icon: h(Icon, { icon: 'line-md:loading-loop', color: 'green' } as IconProps),
-  //   message: '登陆中',
-  //   duration: 0,
-  // });
-  userStore.login(form).then((res) => {
-    // message.close();
-    // ElMessage({
-    //   type: 'success',
-    //   message: '登陆成功，即将进入系统',
-    //   duration: 1500,
-    // });
-    setTimeout(() => {
-      loading.value = false;
-      router.push('/home');
-    }, 1000);
+function handleSubmit(e: MouseEvent) {
+  e.preventDefault();
+
+  formRef.value?.validate(async (errors) => {
+    if (!errors) {
+      message.loading('登陆中...');
+      loading.value = true;
+
+      try {
+        const loginRes = await userStore.login(form);
+        message.success('登陆成功，正在进入系统');
+        router.replace('/');
+      } finally {
+        loading.value = false;
+      }
+    } else {
+      message.error('请填写完整信息，并且进行验证码校验');
+    }
   });
 }
 </script>
@@ -99,6 +122,9 @@ function handleSubmit() {
 .login__view {
   width: 100%;
   height: 100vh;
+  background-image: url('/@/assets/images/logo/login.svg');
+  background-position: 50%;
+  background-size: 100%;
   .login__header {
   }
 

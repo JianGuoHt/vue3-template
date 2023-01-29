@@ -5,26 +5,39 @@
     :theme="getTheme"
     :theme-overrides="getThemeOverrides"
   >
-    <RouterView />
+    <AppProvider>
+      <RouterView />
+    </AppProvider>
   </NConfigProvider>
 </template>
 
 <script setup lang="ts">
 import type { GlobalThemeOverrides } from 'naive-ui';
 import { zhCN, dateZhCN, darkTheme } from 'naive-ui';
+import { lighten } from './utils';
 import { useDesignSettingStore } from '/@/store/modules/designSetting';
+import { AppProvider } from '/@/components/Application';
 
-const designSetting = useDesignSettingStore();
+const designSettingStore = useDesignSettingStore();
 
 // 控制是否黑夜模式
-const getTheme = computed(() => (designSetting.darkTheme ? darkTheme : undefined));
+const getTheme = computed(() => (designSettingStore.darkTheme ? darkTheme : undefined));
 
 // 配置naive-ui主题
 const getThemeOverrides = computed(() => {
-  const appTheme = designSetting.appTheme;
+  const appTheme = designSettingStore.appTheme;
+  // 主题色浅色
+  const lightenStr = lighten(appTheme, 6);
+
   const theme: GlobalThemeOverrides = {
     common: {
       primaryColor: appTheme,
+      primaryColorHover: lightenStr,
+      primaryColorPressed: lightenStr,
+      primaryColorSuppl: appTheme,
+    },
+    LoadingBar: {
+      colorLoading: appTheme,
     },
   };
 

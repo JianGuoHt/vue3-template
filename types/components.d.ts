@@ -7,6 +7,7 @@ export {};
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Application: typeof import('./../src/components/Application/Application.vue')['default'];
     ElAside: typeof import('element-plus/es')['ElAside'];
     ElButton: typeof import('element-plus/es')['ElButton'];
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider'];
@@ -21,16 +22,24 @@ declare module '@vue/runtime-core' {
     ElMenu: typeof import('element-plus/es')['ElMenu'];
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem'];
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar'];
+    NButton: typeof import('naive-ui')['NButton'];
     NConfigProvider: typeof import('naive-ui')['NConfigProvider'];
+    NDialogProvider: typeof import('naive-ui')['NDialogProvider'];
     NDivider: typeof import('naive-ui')['NDivider'];
     NDrawer: typeof import('naive-ui')['NDrawer'];
     NDrawerContent: typeof import('naive-ui')['NDrawerContent'];
+    NForm: typeof import('naive-ui')['NForm'];
+    NFormItem: typeof import('naive-ui')['NFormItem'];
     NIcon: typeof import('naive-ui')['NIcon'];
+    NInput: typeof import('naive-ui')['NInput'];
     NLayout: typeof import('naive-ui')['NLayout'];
     NLayoutContent: typeof import('naive-ui')['NLayoutContent'];
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader'];
     NLayoutSider: typeof import('naive-ui')['NLayoutSider'];
+    NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider'];
     NMenu: typeof import('naive-ui')['NMenu'];
+    NMessageProvider: typeof import('naive-ui')['NMessageProvider'];
+    NNotificationProvider: typeof import('naive-ui')['NNotificationProvider'];
     NSwitch: typeof import('naive-ui')['NSwitch'];
     NTooltip: typeof import('naive-ui')['NTooltip'];
     RouterLink: typeof import('vue-router')['RouterLink'];

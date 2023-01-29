@@ -10,7 +10,7 @@ const api: MockMethod[] = [
   {
     url: '/api/login',
     method: 'post',
-    timeout: 1000,
+    timeout: 3000,
     response: resultSuccess(undefined, { token }),
   },
 ];

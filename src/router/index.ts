@@ -4,6 +4,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { Layout } from './constant';
 import { isArray } from '/@/utils/is';
+import { createRouterGuards } from './guards';
 
 NProgress.configure({ showSpinner: false });
 
@@ -27,6 +28,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     component: Layout,
+    redirect: 'home',
     children: [
       {
         path: 'home',
@@ -52,18 +54,10 @@ const router: Router = createRouter({
   routes: constantRoutes,
 });
 
-router.beforeEach(() => {
-  if (!NProgress.isStarted()) {
-    NProgress.start();
-  }
-});
-
-router.afterEach(() => {
-  NProgress.done();
-});
-
 export function setupRouter(app: App) {
   app.use(router);
+  // 创建路由守卫
+  createRouterGuards(router);
 }
 
 export default router;

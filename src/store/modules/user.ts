@@ -24,6 +24,7 @@ export const useUserStore = defineStore('user', {
       this.token = token;
     },
 
+    // 登录系统
     async login(userInfo: { username: string; password: string }) {
       try {
         const response = await login(userInfo);

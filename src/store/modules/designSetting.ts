@@ -1,3 +1,4 @@
+import store from '/@/store';
 import { storage } from '/@/utils/Storage';
 import designSetting, { appThemeList } from '/@/settings/designSetting';
 import { StorageEnum } from '/@/enums/storageEnum';
@@ -40,3 +41,8 @@ export const useDesignSettingStore = defineStore('app-design-setting', {
     },
   },
 });
+
+// Need to be used outside the setup
+export function useDesignSettingWithOut() {
+  return useDesignSettingStore(store);
+}

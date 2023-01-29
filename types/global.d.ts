@@ -1,3 +1,5 @@
+import { DialogApi, LoadingBarApi, MessageApi, NotificationApi } from 'naive-ui';
+
 export {};
 
 declare global {
@@ -8,8 +10,18 @@ declare global {
     // 生产环境 开启mock
     VITE_GLOB_PROD_MOCK: boolean;
   }
+
+  interface Window {
+    // naive 脱离上下文的 API
+    $loadingBar: LoadingBarApi;
+    $dialog: DialogApi;
+    $message: MessageApi;
+    $notification: NotificationApi;
+  }
 }
 
 declare module 'vue' {
-  export type JSXComponent<Props = any> = { new (): ComponentPublicInstance<Props> } | FunctionalComponent<Props>;
+  export type JSXComponent<Props = any> =
+    | { new (): ComponentPublicInstance<Props> }
+    | FunctionalComponent<Props>;
 }
