@@ -18,6 +18,12 @@ declare global {
     $message: MessageApi;
     $notification: NotificationApi;
   }
+
+  // 用户信息
+  declare interface UserInfo {
+    // 头像
+    avatar?: string;
+  }
 }
 
 declare module 'vue' {

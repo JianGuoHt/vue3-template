@@ -13,6 +13,19 @@ const api: MockMethod[] = [
     timeout: 3000,
     response: resultSuccess(undefined, { token }),
   },
+  {
+    url: '/api/userInfo',
+    method: 'post',
+    timeout: 10,
+    response: resultSuccess(undefined, {
+      permissions: ['*:*:*'],
+      roles: ['admin'],
+      user: {
+        userId: 1,
+        avatar: '',
+      },
+    }),
+  },
 ];
 
 export default api;

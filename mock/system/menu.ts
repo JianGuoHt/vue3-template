@@ -3,71 +3,68 @@ import { resultSuccess } from '../_util';
 const menuList = () => {
   const result: any[] = [
     {
-      label: 'Dashboard',
-      key: 'dashboard',
-      type: 1,
-      subtitle: 'dashboard',
-      openType: 1,
-      auth: 'dashboard',
+      name: 'Dashboard',
       path: '/dashboard',
+      hidden: false,
+      redirect: 'noRedirect',
+      component: 'Layout',
+      meta: {
+        title: 'Dashboard',
+        icon: 'DashboardOutlined',
+        noCache: false,
+        link: null,
+      },
       children: [
         {
-          label: '主控台',
-          key: 'console',
-          type: 1,
-          subtitle: 'console',
-          openType: 1,
-          auth: 'console',
-          path: '/dashboard/console',
+          path: 'console',
+          name: 'dashboard_console',
+          component: '/dashboard/console/console',
+          hidden: false,
+          meta: {
+            title: '主控台',
+            icon: '',
+            noCache: false,
+            link: null,
+          },
         },
         {
-          label: '工作台',
-          key: 'workplace',
-          type: 1,
-          subtitle: 'workplace',
-          openType: 1,
-          auth: 'workplace',
-          path: '/dashboard/workplace',
+          path: 'monitor',
+          name: 'dashboard_monitor',
+          component: '/dashboard/monitor/monitor',
+          hidden: false,
+          meta: {
+            title: '监控页',
+            icon: '',
+            noCache: false,
+            link: null,
+          },
+        },
+        {
+          path: 'workplace',
+          name: 'dashboard_workplace',
+          component: '/dashboard/workplace/workplace',
+          hidden: true,
+          meta: {
+            title: '工作台',
+            icon: '',
+            noCache: false,
+            link: null,
+          },
         },
       ],
     },
+
     {
-      label: '表单管理',
-      key: 'form',
-      type: 1,
-      subtitle: 'form',
-      openType: 1,
-      auth: 'form',
-      path: '/form',
-      children: [
-        {
-          label: '基础表单',
-          key: 'basic-form',
-          type: 1,
-          subtitle: 'basic-form',
-          openType: 1,
-          auth: 'basic-form',
-          path: '/form/basic-form',
-        },
-        {
-          label: '分步表单',
-          key: 'step-form',
-          type: 1,
-          subtitle: 'step-form',
-          openType: 1,
-          auth: 'step-form',
-          path: '/form/step-form',
-        },
-        {
-          label: '表单详情',
-          key: 'detail',
-          type: 1,
-          subtitle: 'detail',
-          openType: 1,
-          auth: 'detail',
-          path: '/form/detail',
-        },
-      ],
+      name: 'Http://ruoyi.vip',
+      path: 'http://ruoyi.vip',
+      hidden: false,
+      component: 'Layout',
+      meta: {
+        title: '若依官网',
+        icon: 'guide',
+        noCache: false,
+        link: 'http://ruoyi.vip',
+      },
     },
   ];
 
@@ -81,9 +78,7 @@ export default [
     method: 'get',
     response: () => {
       const list = menuList();
-      return resultSuccess({
-        list,
-      });
+      return resultSuccess(list);
     },
   },
 ];

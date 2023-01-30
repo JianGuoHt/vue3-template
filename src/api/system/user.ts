@@ -7,3 +7,10 @@ export function login(data: any) {
     data,
   });
 }
+
+export function getUserInfo() {
+  return http.request({
+    url: '/userInfo',
+    method: 'POST',
+  });
+}
