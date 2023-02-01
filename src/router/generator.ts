@@ -59,7 +59,7 @@ export function formatRoutes(
       component: item.component,
       meta: {
         ...item.meta,
-        icon: getIcon(item?.meta?.icon || ''),
+        icon: getIcon((item?.meta?.icon as string) || ''),
       },
       hidden: item.hidden || false,
       children: <AppRouteRecordRaw[]>[],
