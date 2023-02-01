@@ -21,11 +21,11 @@ export default defineComponent({
 
 <script lang="ts" setup>
 import type { MenuOption } from 'naive-ui';
+import { useRoute, useRouter } from 'vue-router';
 import { useProjectSettingStore } from '/@/store/modules/projectSetting';
 import { useDesignSettingStore } from '/@/store/modules/designSetting';
 import { useAsyncRouteStore } from '/@/store/modules/asyncRoute';
 import { generateMenu } from './helper';
-import { useRoute, useRouter } from 'vue-router';
 
 const projectSettingStore = useProjectSettingStore();
 const asyncRouteStore = useAsyncRouteStore();
