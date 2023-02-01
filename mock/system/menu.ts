@@ -10,7 +10,7 @@ const menuList = () => {
       component: 'Layout',
       meta: {
         title: 'Dashboard',
-        icon: 'DashboardOutlined',
+        icon: 'link',
         noCache: false,
         link: null,
       },
@@ -18,7 +18,7 @@ const menuList = () => {
         {
           path: 'console',
           name: 'dashboard_console',
-          component: '/dashboard/console/console',
+          component: '/dashboard/console/index',
           hidden: false,
           meta: {
             title: '主控台',
@@ -30,7 +30,7 @@ const menuList = () => {
         {
           path: 'monitor',
           name: 'dashboard_monitor',
-          component: '/dashboard/monitor/monitor',
+          component: '/dashboard/monitor/index',
           hidden: false,
           meta: {
             title: '监控页',
@@ -42,7 +42,7 @@ const menuList = () => {
         {
           path: 'workplace',
           name: 'dashboard_workplace',
-          component: '/dashboard/workplace/workplace',
+          component: '/dashboard/workplace/index',
           hidden: true,
           meta: {
             title: '工作台',
@@ -53,18 +53,42 @@ const menuList = () => {
         },
       ],
     },
-
     {
-      name: 'Http://ruoyi.vip',
-      path: 'http://ruoyi.vip',
-      hidden: false,
+      path: '/frame',
+      name: 'Frame',
+      redirect: '/frame/docs',
       component: 'Layout',
       meta: {
-        title: '若依官网',
-        icon: 'guide',
-        noCache: false,
-        link: 'http://ruoyi.vip',
+        title: '外部页面',
+        sort: 8,
+        icon: 'DesktopOutline',
       },
+      children: [
+        {
+          path: 'naive-admin',
+          name: 'naive-admin',
+          meta: {
+            title: 'NaiveAdmin',
+            link: 'https://www.naiveadmin.com',
+          },
+        },
+        {
+          path: 'docs',
+          name: 'frame-docs',
+          meta: {
+            title: '项目文档(内嵌)',
+            link: 'https://jekip.github.io/docs',
+          },
+        },
+        {
+          path: 'naive',
+          name: 'frame-naive',
+          meta: {
+            title: 'NaiveUi(内嵌)',
+            link: 'https://www.naiveui.com',
+          },
+        },
+      ],
     },
   ];
 

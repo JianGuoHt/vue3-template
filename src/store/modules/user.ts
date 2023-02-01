@@ -10,8 +10,8 @@ interface UserState {
   userName: string;
   avatar: string;
   userInfo: UserInfo;
-  roles: [];
-  permissions: [];
+  roles: string[];
+  permissions: string[];
 }
 
 export const useUserStore = defineStore('user', {
@@ -23,6 +23,16 @@ export const useUserStore = defineStore('user', {
     roles: [],
     permissions: [],
   }),
+
+  getters: {
+    getPermissions(): string[] {
+      return this.permissions;
+    },
+
+    getRoles(): string[] {
+      return this.roles;
+    },
+  },
 
   actions: {
     setToken(token: string) {

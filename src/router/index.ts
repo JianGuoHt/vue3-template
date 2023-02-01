@@ -1,19 +1,16 @@
 import type { App } from 'vue';
 import { createRouter, createWebHistory, Router, RouteRecordRaw } from 'vue-router';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
 import { Layout } from './constant';
 import { isArray } from '/@/utils/is';
 import { createRouterGuards } from './guards';
-
-NProgress.configure({ showSpinner: false });
+import { AppRouteRecordRaw } from './types';
 
 const modules = import.meta.glob('./modules/**/*.ts');
 
-const routeModuleList: RouteRecordRaw[] = [];
+const routeModuleList: AppRouteRecordRaw[] = [];
 
 for (const path in modules) {
-  await modules[path]().then((mod) => {
+  await modules[path]().then((mod: any) => {
     const modDefault = mod.default;
     const modList = isArray(modDefault) ? [...modDefault] : [modDefault];
     routeModuleList.push(...modList);
@@ -21,12 +18,14 @@ for (const path in modules) {
 }
 
 // 需要验证权限
-export const asyncRoutes = [...routeModuleList];
+// 动态路由，基于用户权限动态去加载
+export const asyncLocalRoutes: AppRouteRecordRaw[] = [...routeModuleList];
 
 // 普通路由，无需验证权限
-export const constantRoutes: RouteRecordRaw[] = [
+export const constantRoutes: AppRouteRecordRaw[] = [
   {
     path: '/',
+    name: 'Home',
     component: Layout,
     redirect: 'home',
     children: [

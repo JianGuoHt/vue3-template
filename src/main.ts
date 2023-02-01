@@ -7,6 +7,8 @@ import { setupNaiveDiscreteApi } from '/@/plugins';
 import { setupRouter } from '/@/router';
 import { setupStore } from '/@/store';
 
+import '/@/router/icons';
+
 function bootstrap() {
   const app = createApp(App);
 

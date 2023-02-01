@@ -1,4 +1,17 @@
+import { Icon } from '@iconify/vue';
 import { isObject } from 'lodash-es';
+import { NIcon } from 'naive-ui';
+
+/**
+ * render 图标
+ * */
+export function renderNIcon(icon: any) {
+  return () => h(NIcon, null, { default: () => h(icon) });
+}
+
+export function renderIcon(icon: any) {
+  return () => h(Icon, { icon });
+}
 
 /**
  * 深度合并对象

@@ -40,6 +40,7 @@ declare module '@vue/runtime-core' {
     NMenu: typeof import('naive-ui')['NMenu'];
     NMessageProvider: typeof import('naive-ui')['NMessageProvider'];
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider'];
+    NSpin: typeof import('naive-ui')['NSpin'];
     NSwitch: typeof import('naive-ui')['NSwitch'];
     NTooltip: typeof import('naive-ui')['NTooltip'];
     RouterLink: typeof import('vue-router')['RouterLink'];
