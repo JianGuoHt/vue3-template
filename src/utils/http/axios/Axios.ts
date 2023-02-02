@@ -1,9 +1,11 @@
 import type { AxiosHeaders, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import type { RequestOptions, Result } from '/#/axios';
-import type { CreateAxiosOptions } from './axiosTransform';
 import axios from 'axios';
 import { cloneDeep } from 'lodash-es';
+
 import { isFunction } from '/@/utils/is';
+import type { RequestOptions, Result } from '/#/axios';
+
+import type { CreateAxiosOptions } from './axiosTransform';
 
 export class VAxios {
   private axiosInstance: AxiosInstance;

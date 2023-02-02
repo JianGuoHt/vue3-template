@@ -1,13 +1,15 @@
 import '/@/design/tailwind.css';
 import '/@/design/preflight.css';
 import '/@/design/index.scss';
+import '/@/router/icons';
+
 import { createApp } from 'vue';
-import App from './App.vue';
+
 import { setupNaiveDiscreteApi } from '/@/plugins';
 import { setupRouter } from '/@/router';
 import { setupStore } from '/@/store';
 
-import '/@/router/icons';
+import App from './App.vue';
 
 function bootstrap() {
   const app = createApp(App);

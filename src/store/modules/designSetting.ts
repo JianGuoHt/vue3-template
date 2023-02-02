@@ -1,7 +1,7 @@
+import { StorageEnum } from '/@/enums/storageEnum';
+import designSetting, { appThemeList } from '/@/settings/designSetting';
 import store from '/@/store';
 import { storage } from '/@/utils/Storage';
-import designSetting, { appThemeList } from '/@/settings/designSetting';
-import { StorageEnum } from '/@/enums/storageEnum';
 
 const { darkTheme, appTheme } = designSetting;
 

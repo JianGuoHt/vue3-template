@@ -1,6 +1,7 @@
 import { createDiscreteApi, darkTheme } from 'naive-ui';
-import { lighten } from '/@/utils';
+
 import { useDesignSettingWithOut } from '/@/store/modules/designSetting';
+import { lighten } from '/@/utils';
 
 /**
  * 挂载 Naive-ui 脱离上下文的 API

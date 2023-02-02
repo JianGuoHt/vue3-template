@@ -1,7 +1,9 @@
 import type { App } from 'vue';
 import { createRouter, createWebHistory, Router } from 'vue-router';
-import { Layout } from './constant';
+
 import { isArray } from '/@/utils/is';
+
+import { Layout } from './constant';
 import { createRouterGuards } from './guards';
 import { AppRouteRecordRaw } from './types';
 

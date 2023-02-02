@@ -3,6 +3,7 @@
  */
 
 import { Router } from 'vue-router';
+
 import { StorageEnum } from '../enums/storageEnum';
 import { useAsyncRouteStoreWidthOut } from '../store/modules/asyncRoute';
 import { useUserStoreWidthOut } from '../store/modules/user';

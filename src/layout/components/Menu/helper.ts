@@ -1,6 +1,7 @@
-import { AppRouteRecordRaw } from '/@/router/types';
 import type { MenuOption } from 'naive-ui';
+
 import { PageEnum } from '/@/enums/pageEnum';
+import { AppRouteRecordRaw } from '/@/router/types';
 import { renderIcon, renderNIcon } from '/@/utils';
 
 /**

@@ -1,13 +1,14 @@
 /**
  * 生成路由
  */
-import { asyncLocalRoutes } from '.';
+import { getMenuList } from '/@/api/system/menu';
+import auth from '/@/plugins/auth';
+
 import { isFunction } from '../utils/is';
+import { asyncLocalRoutes } from '.';
 import { Iframe, Layout, ParentLayout } from './constant';
 import { getIcon } from './icons';
 import { AppRouteRecordRaw } from './types';
-import { getMenuList } from '/@/api/system/menu';
-import auth from '/@/plugins/auth';
 
 const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>();
 

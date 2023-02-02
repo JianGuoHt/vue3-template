@@ -1,7 +1,8 @@
-import type { CreateAxiosOptions, AxiosTransform } from './axiosTransform';
 import { ResultEnum } from '/@/enums/httpEnum';
-import { VAxios } from './Axios';
 import { deepMerge } from '/@/utils';
+
+import { VAxios } from './Axios';
+import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { checkStatus } from './checkStatus';
 
 const transform: AxiosTransform = {

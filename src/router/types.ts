@@ -1,5 +1,5 @@
-import type { RouteMeta, RouteRecordRaw } from 'vue-router';
 import type { ExtendedIconifyIcon } from '@iconify/types';
+import type { RouteMeta, RouteRecordRaw } from 'vue-router';
 
 // 后端返回的菜单结构
 export interface AsyncRouteRecordRaw {

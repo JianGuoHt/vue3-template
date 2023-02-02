@@ -1,9 +1,10 @@
+import { reject } from 'lodash-es';
+
 import { getUserInfo, login } from '/@/api/system/user';
 import { StorageEnum } from '/@/enums/storageEnum';
-import { storage } from '/@/utils/Storage';
 import store from '/@/store';
 import { isArray } from '/@/utils/is';
-import { reject } from 'lodash-es';
+import { storage } from '/@/utils/Storage';
 
 interface UserState {
   token: string;
