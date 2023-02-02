@@ -10,5 +10,6 @@ export default defineComponent({
 
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue';
+
 import { getIcon } from '/@/router/icons';
 </script>

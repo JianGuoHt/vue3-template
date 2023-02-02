@@ -13,10 +13,12 @@
 
 <script setup lang="ts">
 import type { GlobalThemeOverrides } from 'naive-ui';
-import { zhCN, dateZhCN, darkTheme } from 'naive-ui';
-import { lighten } from './utils';
-import { useDesignSettingStore } from '/@/store/modules/designSetting';
+import { darkTheme, dateZhCN, zhCN } from 'naive-ui';
+
 import { AppProvider } from '/@/components/Application';
+import { useDesignSettingStore } from '/@/store/modules/designSetting';
+
+import { lighten } from './utils';
 
 const designSettingStore = useDesignSettingStore();
 

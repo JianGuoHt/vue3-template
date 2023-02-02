@@ -49,8 +49,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { CSSProperties } from 'vue';
 import { Icon } from '@iconify/vue';
+import type { CSSProperties } from 'vue';
+
 import { useDesignSettingStore } from '/@/store/modules/designSetting';
 
 const drawerShow = ref(false);

@@ -12,8 +12,8 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { useProjectSettingStore } from '/@/store/modules/projectSetting';
 import Logo from '/@/assets/images/logo/logo.png';
+import { useProjectSettingStore } from '/@/store/modules/projectSetting';
 
 const projectSettingStore = useProjectSettingStore();
 const { menuCollapse } = storeToRefs(projectSettingStore);

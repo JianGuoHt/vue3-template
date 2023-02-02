@@ -24,6 +24,7 @@ export default defineComponent({
 
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue';
+
 import MenuTrigger from './MenuTrigger.vue';
 import ProjectSetting from './ProjectSetting.vue';
 
