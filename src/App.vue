@@ -25,6 +25,10 @@ const designSettingStore = useDesignSettingStore();
 // 控制是否黑夜模式
 const getTheme = computed(() => (designSettingStore.darkTheme ? darkTheme : undefined));
 
+// 设置主题色
+const appDom = document.getElementById('app');
+appDom?.style.setProperty('--sys-app-theme', designSettingStore.appTheme);
+
 // 配置naive-ui主题
 const getThemeOverrides = computed(() => {
   const appTheme = designSettingStore.appTheme;

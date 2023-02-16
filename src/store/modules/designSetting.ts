@@ -38,6 +38,8 @@ export const useDesignSettingStore = defineStore('app-design-setting', {
     setAppTheme(color: string) {
       this.appTheme = color;
       storage.set(StorageEnum.APP_THEME, color);
+      const appDom = document.getElementById('app');
+      appDom?.style.setProperty('--sys-app-theme', color);
     },
   },
 });

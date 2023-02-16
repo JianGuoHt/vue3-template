@@ -1,5 +1,5 @@
 <template>
-  <div class="layout__header flex justify-between shadow">
+  <div class="layout__header flex justify-between shadow-sm">
     <div class="layout__header__left flex">
       <MenuTrigger />
     </div>
@@ -38,7 +38,9 @@ function onOpenSetting() {
 
 <style lang="scss" scoped>
 .layout__header {
-  height: 50px;
+  height: var(--sys-header-height);
+  line-height: var(--sys-header-height);
+  position: relative;
   .layout__header__left {
     height: inherit;
   }
@@ -48,8 +50,7 @@ function onOpenSetting() {
   }
 
   .layout__header__trigger {
-    height: 50px;
-    line-height: 50px;
+    height: inherit;
     cursor: pointer;
     padding: 0 10px;
 

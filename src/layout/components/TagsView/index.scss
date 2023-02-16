@@ -1,0 +1,54 @@
+.layout__tags_view {
+  font-size: 12px;
+  height: var(--sys-tags-view-height);
+  background-color: #fff;
+  padding-top: 3px;
+
+  ::v-deep(.suffix__btn) {
+    width: 36px;
+    height: 100%;
+    border-left: 1px solid #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.45);
+    background-color: transparent;
+
+    &:hover {
+      color: #000000;
+    }
+  }
+
+  ::v-deep(.tag__body) {
+    .n-tabs-scroll-padding,
+    .n-tabs-pad,
+    .n-tabs-tab-pad {
+      border: none;
+    }
+
+    .n-tabs-tab {
+      user-select: none;
+      &.n-tabs-tab--active {
+        background-color: var(--sys-app-theme) !important;
+        color: #fff;
+        --n-close-icon-color: #fff;
+        --n-close-icon-color-hover: #fff;
+      }
+
+      // &:hover {
+      //   .n-base-close {
+      //     visibility: visible;
+      //   }
+      // }
+
+      // .n-base-close {
+      //   visibility: hidden;
+      // }
+    }
+
+    .n-tabs-nav__suffix {
+      border: none;
+    }
+  }
+}

@@ -7,7 +7,6 @@
         <div class="drawer__setting_item flex justify-center">
           <NTooltip placement="bottom">
             <template #trigger>
-              <!-- v-model:value="designStore.darkTheme" -->
               <NSwitch
                 :value="designStore.darkTheme"
                 :rail-style="setRailStyle"

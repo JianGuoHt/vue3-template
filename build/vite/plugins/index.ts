@@ -1,11 +1,12 @@
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
-import Components from 'unplugin-vue-components/vite';
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
-import Icons from 'unplugin-icons/vite';
-import IconsResolver from 'unplugin-icons/resolver';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
+import IconsResolver from 'unplugin-icons/resolver';
+import Icons from 'unplugin-icons/vite';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import Components from 'unplugin-vue-components/vite';
 import { PluginOption } from 'vite';
+
 import { configMockPlugin } from './mock';
 
 export default ({ isBuild, viteEnv }: ViteConfigEnv) => {
@@ -33,7 +34,7 @@ export default ({ isBuild, viteEnv }: ViteConfigEnv) => {
         },
       ],
       resolvers: [],
-      dts: 'types/auto-import.d.ts', // 生成在src路径下名为auto-import.d.ts的声明文件
+      dts: './auto-import.d.ts', // 生成在src路径下名为auto-import.d.ts的声明文件
       eslintrc: {
         enabled: true, // Default `false`
         filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
@@ -41,7 +42,7 @@ export default ({ isBuild, viteEnv }: ViteConfigEnv) => {
       },
     }),
     Components({
-      dts: 'types/components.d.ts',
+      dts: './components.d.ts',
       // imports 指定组件所在位置，默认为 src/components; 有需要也可以加上 view 目录
       dirs: ['src/components/'],
       resolvers: [

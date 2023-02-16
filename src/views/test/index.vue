@@ -1,5 +1,7 @@
 <template>
-  <div>测试页面1 <Icon :icon="getIcon('aim')" /></div>
+  <div class="text-[12px] leading-[12px]">
+    测试页面1 <Icon class="inline text-[18px]" :icon="getIcon('aim')" />
+  </div>
 </template>
 
 <script lang="ts">

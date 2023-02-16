@@ -13,6 +13,7 @@
     <NLayout>
       <NLayoutHeader position="absolute">
         <LayoutHeader />
+        <LayoutTagsView />
       </NLayoutHeader>
 
       <NLayoutContent :class="{ layout__default_background: getDarkTheme === false }">
@@ -40,6 +41,7 @@ import LayoutHeader from './components/Header/index.vue';
 import LayoutLogo from './components/Logo/index.vue';
 import LayoutMain from './components/Main/index.vue';
 import LayoutMenu from './components/Menu/index.vue';
+import { LayoutTagsView } from './components/TagsView';
 
 const projectSettingStore = useProjectSettingStore();
 
@@ -67,7 +69,7 @@ const { menuCollapse } = storeToRefs(projectSettingStore);
 
   .layout__main {
     height: 100vh;
-    padding-top: 54px;
+    padding-top: calc(var(--sys-header-height) + var(--sys-tags-view-height));
     margin: 0 10px 0 10px;
   }
 }

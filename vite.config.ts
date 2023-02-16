@@ -1,7 +1,8 @@
-import { ConfigEnv, defineConfig, loadEnv } from 'vite';
 import { resolve } from 'path';
-import plugins from './build/vite/plugins';
+import { ConfigEnv, defineConfig, loadEnv } from 'vite';
+
 import { wrapperEnv } from './build/utils';
+import plugins from './build/vite/plugins';
 
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
